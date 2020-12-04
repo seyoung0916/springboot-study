@@ -3,8 +3,10 @@ package com.se0.self.study.config.auth.dto;
 import com.se0.self.study.domain.user.User;
 import lombok.Getter;
 
+import java.io.Serializable;
+
 @Getter
-public class SessionUser {
+public class SessionUser implements Serializable {
     private String name;
     private String email;
     private String picture;

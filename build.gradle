@@ -32,5 +32,6 @@ dependencies { // 버전 명시 안 해야 맨 위의 springBootVersion을 따�
     compile('com.h2database:h2')
     compile('org.springframework.boot:spring-boot-starter-mustache')
     compile('org.springframework.boot:spring-boot-starter-oauth2-client')
+    compile('org.springframework.session:spring-session-jdbc')
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
