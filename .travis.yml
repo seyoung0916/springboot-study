@@ -36,7 +36,7 @@ deploy:
     access_key_id: $AWS_ACCESS_KEY # Travis repo에 설정된 값
     secret_access_key: $AWS_SECRET_KEY
     bucket: se0-springboot-build
-    key: se0-springboot-build.zip
+    key: se0-springboot-study.zip
     bundle_type: zip
     application: se0-springboot-study # codedeploy 애플리케이션
     deployment_group: se0-springboot-study-group # codedeploy 배포그룹
