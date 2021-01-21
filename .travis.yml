@@ -15,32 +15,32 @@ script: "./gradlew clean build"
 before_install:
   - chmod +x gradlew
 
-#before_deploy:
-#  - zip -r springboot-study *
-#  - mkdir -p deploy
-#  - mv springboot-study.zip deploy/springboot-study.zip
-#
-#deploy:
-#  - provider: s3
-#    access_key_id: $AWS_ACCESS_KEY
-#    secret_access_key: $AWS_SECRET_KEY
-#    bucket: se0-springboot-build # s3 버킷
-#    region: ap-northeast-2
-#    cleanup: true
-#    acl: private # zip 파일접근
-#    local_dir: deploy # before_deploy에서 생성한 dir
-#    wait-until-deployed: true
+before_deploy:
+  - zip -r springboot-study *
+  - mkdir -p deploy
+  - mv springboot-study.zip deploy/springboot-study.zip
 
-#  - provider: codedeploy
-#    access_key_id: $AWS_ACCESS_KEY # Travis repo에 설정된 값
-#    secret_access_key: $AWS_SECRET_KEY
-#    bucket: se0-springboot-build
-#    key: study.zip # 빌드파일 압축해서 전달
-#    bundle_type: zip
-#    application: se0-springboot-study # codedeploy 애플리케이션
-#    deployment_group: se0-springboot-study-group # codedeploy 배포그룹
-#    region: ap-northeast-2
-#    wait-until-deployed: true
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: se0-springboot-build # s3 버킷
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: private # zip 파일접근
+    local_dir: deploy # before_deploy에서 생성한 dir
+    wait-until-deployed: true
+
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY # Travis repo에 설정된 값
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: se0-springboot-build
+    key: study.zip # 빌드파일 압축해서 전달
+    bundle_type: zip
+    application: se0-springboot-study # codedeploy 애플리케이션
+    deployment_group: se0-springboot-study-group # codedeploy 배포그룹
+    region: ap-northeast-2
+    wait-until-deployed: true
 
 #CI 실행 완료 시 메일 알람
 notifications:
