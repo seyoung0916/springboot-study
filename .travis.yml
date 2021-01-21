@@ -12,9 +12,9 @@ cache:
     - '$HOME/.gradle'
 script: "./gradlew clean build"
 
-#before_install:
-#  - chmod +x gradlew
-#
+before_install:
+  - chmod +x gradlew
+
 #before_deploy:
 #  - zip -r springboot-study *
 #  - mkdir -p deploy
